@@ -10,10 +10,7 @@
     "umd",
     "lib"
   ],
-  "dependencies": {
-    "clone-deep": "^2.0.1",
-    "kind-of": "^6.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-core": "^6.26.0",

@@ -1,4 +1,4 @@
-import kindOf from 'kind-of'
+import kindOf from './kindOf'
 
 import { KIND } from './constants'
 import { isStruct, resolveDefaults } from './utils'
@@ -740,17 +740,7 @@ function scalar(schema, defaults, options) {
   }
 
   const { types } = options
-  const fn = types[schema]
-
-  if (kindOf(fn) !== 'function') {
-    if (process.env.NODE_ENV !== 'production') {
-      throw new Error(
-        `No struct validator function found for type "${schema}".`
-      )
-    } else {
-      throw new Error(`Invalid type: ${schema}`)
-    }
-  }
+  const fn = types[schema] || (value => kindOf(value) === schema)
 
   const kind = func(fn, defaults, options)
   const name = 'scalar'
